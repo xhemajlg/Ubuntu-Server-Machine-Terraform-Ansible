@@ -1,0 +1,65 @@
+---
+- hosts: ubuntu
+  become: yes
+  tasks:
+    - name: Update and upgrade apt packages
+      apt:
+        update_cache: yes
+        upgrade: dist
+
+    - name: Install Nginx and SSH
+      apt:
+        name:
+          - nginx
+          - openssh-server
+        state: present
+
+    - name: Configure Nginx to listen only on external interface
+      lineinfile:
+        path: /etc/nginx/sites-available/default
+        regexp: 'listen 80 default_server;'
+        line: 'listen your_external_ip:80;'
+        state: present
+
+    - name: Configure SSH to listen only on external interface
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#?ListenAddress'
+        line: 'ListenAddress your_external_ip'
+        state: present
+      notify:
+        - Restart SSH
+
+    - name: Harden SSH Configuration
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#?PermitRootLogin'
+        line: 'PermitRootLogin no'
+      notify:
+        - Restart SSH
+
+    - name: Ensure UFW is installed
+      apt:
+        name: ufw
+        state: present
+
+    - name: Configure UFW to allow necessary ports
+      ufw:
+        rule: allow
+        port: '{{ item }}'
+      with_items:
+        - 22
+        - 80
+        - 9000
+      notify:
+        - Enable UFW
+
+  handlers:
+    - name: Restart SSH
+      service:
+        name: ssh
+        state: restarted
+
+    - name: Enable UFW
+      command: ufw enable
+      ignore_errors: yes
