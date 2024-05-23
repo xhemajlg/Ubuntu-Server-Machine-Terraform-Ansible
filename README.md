@@ -26,12 +26,11 @@ In our Local Machine where Terraform is installed:
 2. change the dircetory to that newly created directory:
     cd ubuntu_on_vsphere/ Hier you should Copy/Paste the below files: 
  
- 1. variables.tf
- 2. provider.tf
- 3. data.tf
- 4. main.tf
+ variables.tf
+ provider.tf
+ data.tf
+ main.tf
 
- Or by using Text Editors such as "vim" or "nano" you create the .tf files and copy the content/code from the above files to the newly created .tf files
 
 3. Than we can initialize the terraform process:
      terraform init
