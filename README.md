@@ -12,8 +12,7 @@ Automate the deployment and hardening process for a Ubuntu Server Machine, using
 To achieve that there are 4 Terraform files:
  1. variables.tf
  2. provider.tf
- 3. data.tf
- 4. main.tf
+ 3. main.tf
 
 Prerequisites
 
@@ -28,7 +27,6 @@ In our Local Machine where Terraform is installed:
  
  variables.tf
  provider.tf
- data.tf
  main.tf
 
 
