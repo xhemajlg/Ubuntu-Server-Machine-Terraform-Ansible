@@ -43,7 +43,7 @@ resource "vsphere_virtual_machine" "ubuntu_vm" {
         ipv4_netmask = 29
       }
 
-      ipv4_gateway = "10.200.16.1"
+      ipv4_gateway = "external-gateway-ip"
     }
   }
 }
