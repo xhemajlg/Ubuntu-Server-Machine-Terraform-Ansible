@@ -1,7 +1,7 @@
 # Ubuntu-Server-Machine-Terraform-Ansible
 Automate the deployment and hardening process for a Ubuntu Server Machine, using Terraform and Ansible.
 
-#Task 1: Automate the deployment process for a Ubuntu Server Machine, using Terraform
+# Task 1: Automate the deployment process for a Ubuntu Server Machine, using Terraform
 
 1. Configure the vsphere provider.
 2. Define variables for vsphere credentials and server details.
@@ -22,9 +22,9 @@ Prerequisites
 
 In our Local Machine where Terraform is installed:
 1. create a directory:
-    # mkdir ubuntu_on_vsphere # Or whatever name you can give to it
+     mkdir ubuntu_on_vsphere # Or whatever name you can give to it
 2. change the dircetory to that newly created directory:
-   # cd ubuntu_on_vsphere/ Hier you should Copy/Paste the below files: 
+    cd ubuntu_on_vsphere/ Hier you should Copy/Paste the below files: 
  
  1. variables.tf
  2. provider.tf
@@ -34,14 +34,12 @@ In our Local Machine where Terraform is installed:
  Or by using Text Editors such as "vim" or "nano" you create the .tf files and copy the content/code from the above files to the newly created .tf files
 
 3. Than we can initialize the terraform process:
-    # terraform init
-    # terraform plan
-    # terraform apply -var 'vsphere_user=your_user' -var 'vsphere_password=your_password' -var 'vsphere_server=your_server' -var 'vsphere_datacenter=your_datacenter' -var 'vsphere_datastore=your_datastore' -var 'vsphere_cluster=your_cluster' -var 'vsphere_network=your_network' -var 'vsphere_internal_network=your_internal_network' -var 'vm_static_ip=your_static_ip'
+     terraform init
+     terraform plan
+    terraform apply -var 'vsphere_user=your_user' -var 'vsphere_password=your_password' -var 'vsphere_server=your_server' -var 'vsphere_datacenter=your_datacenter' -var 'vsphere_datastore=your_datastore' -var 'vsphere_cluster=your_cluster' -var 'vsphere_network=your_network' -var 'vsphere_internal_network=your_internal_network' -var 'vm_static_ip=your_static_ip'
 
-At the end we should have a new Ubuntu VM created from a Template the default name would be "ubuntu-server", the VM will have an internal network interface wich will be member of VLAN with ID 150 and an Exteraln Interface.
+At the end we should have a new Ubuntu VM created from a Template the default name would be "ubuntu-server", the VM will have an internal network interface wich will be member of VLAN with ID 150 and an External Interface.
 ------------------------
-
-
 Task 2: Automate hardening process ov the above VM using Ansible
 -----------------------------------------------------------------
 This Ansible playbook: 'playbook.yml' automates the setup and configuration of an Ubuntu server with Nginx, SSH, and UFW. The tasks include updating the system, 
@@ -54,8 +52,8 @@ SSH access to the Ubuntu VM
 The external IP address we want Nginx and SSH to listen on.
 
 In the machine where ansible is installed we do that:
-# mkdir ubuntu_hardening /** or whatever name we can give to it
-# cd ubuntu_hardening //** hier we can clone the files "playbook.yml" and "hosts.ini"
+ mkdir ubuntu_hardening /** or whatever name we can give to it
+ cd ubuntu_hardening //** hier we can clone the files "playbook.yml" and "hosts.ini"
 
 Playbook Details:
 
@@ -103,8 +101,8 @@ Enable UFW:
   Enables UFW, ignoring any errors that might occur if UFW is already enabled.
   
 Before runing the Ansible code # Generate an SSH key pair on your local machine (if you don't have one already):
-# ssh-keygen -t rsa -b 4096 -C "your_username"
+ ssh-keygen -t rsa -b 4096 -C "your_username"
 Copy your public SSH key to the Ubuntu Server:
-# ssh-copy-id your_username@ubuntu_server_ip
+ ssh-copy-id your_username@ubuntu_server_ip
 to run the playbook we use that script:
-  # ansible-playbook -i hosts.ini playbook.yml --ask-become-pass
+   ansible-playbook -i hosts.ini playbook.yml --ask-become-pass
