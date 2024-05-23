@@ -22,9 +22,9 @@ Prerequisites
 
 In our Local Machine where Terraform is installed:
 1. create a directory:
-     mkdir ubuntu_on_vsphere # Or whatever name you can give to it
+     -mkdir ubuntu_on_vsphere /* Or whatever name you can give to it
 2. change the dircetory to that newly created directory:
-    cd ubuntu_on_vsphere/ Hier you should Copy/Paste the below files: 
+    -cd ubuntu_on_vsphere  /*Hier you should Copy/Paste the below files: 
  
  variables.tf
  provider.tf
@@ -35,7 +35,8 @@ In our Local Machine where Terraform is installed:
 3. Than we can initialize the terraform process:
     - terraform init
     - terraform plan
-    - terraform apply -var 'vsphere_user=your_user' -var 'vsphere_password=your_password' -var 'vsphere_server=your_server' -var 'vsphere_datacenter=your_datacenter' -var 'vsphere_datastore=your_datastore' -       var 'vsphere_cluster=your_cluster' -var 'vsphere_network=your_network' -var 'vsphere_internal_network=your_internal_network' -var 'vm_static_ip=your_static_ip'
+    - terraform apply -var 'vsphere_user=your_user' -var 'vsphere_password=your_password' -var 'vsphere_server=your_server' -var 'vsphere_datacenter=your_datacenter' -var 'vsphere_datastore=your_datastore' -var 'vsphere_cluster=your_cluster'
+      -var 'vsphere_network=your_network' -var 'vsphere_internal_network=your_internal_network' -var 'vm_static_ip=your_static_ip'
 
 At the end we should have a new Ubuntu VM created from a Template the default name would be "ubuntu-server", the VM will have an internal network interface wich will be member of VLAN with ID 150 and an External Interface.
 ------------------------
@@ -51,8 +52,8 @@ SSH access to the Ubuntu VM
 The external IP address we want Nginx and SSH to listen on.
 
 In the machine where ansible is installed we do that:
- mkdir ubuntu_hardening /** or whatever name we can give to it
- cd ubuntu_hardening //** hier we can clone the files "playbook.yml" and "hosts.ini"
+ - mkdir ubuntu_hardening /** or whatever name we can give to it
+ - cd ubuntu_hardening //** hier we can clone the files "playbook.yml" and "hosts.ini"
 
 Playbook Details:
 
