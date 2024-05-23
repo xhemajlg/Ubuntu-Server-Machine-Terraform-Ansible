@@ -51,8 +51,8 @@ SSH access to the Ubuntu VM
 The external IP address we want Nginx and SSH to listen on.
 
 In the machine where ansible is installed we do that:
- mkdir ubuntu_hardening /** or whatever name we can give to it
- cd ubuntu_hardening //** hier we can clone the files "playbook.yml" and "hosts.ini"
+ - mkdir ubuntu_hardening /** or whatever name we can give to it
+ - cd ubuntu_hardening //** hier we can clone the files "playbook.yml" and "hosts.ini"
 
 Playbook Details:
 
