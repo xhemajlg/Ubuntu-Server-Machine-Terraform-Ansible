@@ -22,9 +22,9 @@ Prerequisites
 
 In our Local Machine where Terraform is installed:
 1. create a directory:
-     mkdir ubuntu_on_vsphere # Or whatever name you can give to it
+     -mkdir ubuntu_on_vsphere /* Or whatever name you can give to it
 2. change the dircetory to that newly created directory:
-    cd ubuntu_on_vsphere/ Hier you should Copy/Paste the below files: 
+    -cd ubuntu_on_vsphere  /*Hier you should Copy/Paste the below files: 
  
  variables.tf
  provider.tf
