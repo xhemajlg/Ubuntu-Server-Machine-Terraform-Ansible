@@ -93,15 +93,14 @@ The playbook uses 'become: yes' to execute tasks with SUDO privileges.
     Triggers the enabling of UFW to apply the changes.
 
 Handlers:
-   Restart SSH
-   Restarts the SSH service to apply configuration changes.
+   - Restarts the SSH service to apply configuration changes.
 
 Enable UFW:
-  Enables UFW, ignoring any errors that might occur if UFW is already enabled.
+  - Enables UFW, ignoring any errors that might occur if UFW is already enabled.
   
 Before runing the Ansible code # Generate an SSH key pair on your local machine (if you don't have one already):
- ssh-keygen -t rsa -b 4096 -C "your_username"
+ - ssh-keygen -t rsa -b 4096 -C "your_username"
 Copy your public SSH key to the Ubuntu Server:
- ssh-copy-id your_username@ubuntu_server_ip
+ - ssh-copy-id your_username@ubuntu_server_ip
 to run the playbook we use that script:
-   ansible-playbook -i hosts.ini playbook.yml --ask-become-pass
+   - ansible-playbook -i hosts.ini playbook.yml --ask-become-pass
