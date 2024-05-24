@@ -9,7 +9,7 @@ Automate the deployment and hardening process for a Ubuntu Server Machine, using
 4. Assign VLAN ID 150 to the internal interface.
 5. Set the external interface to obtain an IP from DHCP or use a static IP.
 
-To achieve that there are 4 Terraform files:
+To achieve that there are 3 Terraform files:
  1. variables.tf
  2. provider.tf
  3. main.tf
